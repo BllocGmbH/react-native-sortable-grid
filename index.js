@@ -94,6 +94,7 @@ class SortableGrid extends Component {
     this.ghostBlocks       = []
     this.itemOrder         = []
     this.panCapture        = false
+    this.shouldBlockPanResponder = true;
     this.items             = []
     this.initialLayoutDone = false
     this.initialDragDone   = false
@@ -518,7 +519,7 @@ class SortableGrid extends Component {
       onStartShouldSetPanResponderCapture: (evt, gestureState) => false,
       onMoveShouldSetPanResponder:         (evt, gestureState) => this.panCapture,
       onMoveShouldSetPanResponderCapture:  (evt, gestureState) => this.panCapture,
-      onShouldBlockNativeResponder:        (evt, gestureState) => false,
+      onShouldBlockNativeResponder:        (evt, gestureState) => this.shouldBlockPanResponder,
       onPanResponderTerminationRequest:    (evt, gestureState) => false,
       onPanResponderGrant:   this.onActiveBlockIsSet(this.onStartDrag),
       onPanResponderMove:    this.onActiveBlockIsSet(this.onMoveBlock),
