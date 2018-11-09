@@ -153,25 +153,25 @@ class SortableGrid extends Component {
   }
 
   onMoveBlock = (evt, {moveX, moveY, dx, dy, x0, y0}) => {
-    let screenHeight = Dimensions.get('window').height
-    // console.log(screenHeight)
-    // console.log({moveX, moveY, dx, dy, x0, y0})
-    let dY = 10;
-
-    let newMoveY = this.moveY?this.moveY:moveY
-    if(moveY >= 0.9*screenHeight) {
-      this.props.scrollDelta && this.props.scrollDelta({dY})
-      newMoveY = newMoveY + dY;
-      this.moveY = newMoveY
-    } else if(moveY <= 0.1*screenHeight) {
-      this.props.scrollDelta && this.props.scrollDelta({dY: -dY})
-      newMoveY = newMoveY - dY;
-      this.moveY = newMoveY
-    } else {
-      this.props.stopScrolling && this.props.stopScrolling();
-    }
-
-    moveY = this.moveY?this.moveY:moveY;
+    // let screenHeight = Dimensions.get('window').height
+    // // console.log(screenHeight)
+    // // console.log({moveX, moveY, dx, dy, x0, y0})
+    // let dY = 10;
+    //
+    // let newMoveY = this.moveY?this.moveY:moveY
+    // if(moveY >= 0.9*screenHeight) {
+    //   this.props.scrollDelta && this.props.scrollDelta({dY})
+    //   newMoveY = newMoveY + dY;
+    //   this.moveY = newMoveY
+    // } else if(moveY <= 0.1*screenHeight) {
+    //   this.props.scrollDelta && this.props.scrollDelta({dY: -dY})
+    //   newMoveY = newMoveY - dY;
+    //   this.moveY = newMoveY
+    // } else {
+    //   this.props.stopScrolling && this.props.stopScrolling();
+    // }
+    //
+    // moveY = this.moveY?this.moveY:moveY;
 
     if (this.state.activeBlock != null && this._blockPositionsSet()) {
       if (this.state.deleteModeOn) return this.deleteModeMove({ x: moveX, y: moveY })
@@ -231,8 +231,8 @@ class SortableGrid extends Component {
   }
 
   onReleaseBlock = (evt, gestureState) => {
-    this.moveY = undefined;
-    this.props.stopScrolling && this.props.stopScrolling();
+    // this.moveY = undefined;
+    // this.props.stopScrolling && this.props.stopScrolling();
     this.returnBlockToOriginalPosition()
     if (this.state.deleteModeOn && this.state.deletionSwipePercent == 100)
       this.deleteBlock()
